@@ -1,32 +1,35 @@
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { RootStackParamList } from '../types';
 
 import BottomTabNavigator from './BottomTabNavigator';
 import NewsDetailScreen from '../screens/NewsDetailScreen';
+import ARScreen from '../screens/ARScreen';
 
 const Stack = createStackNavigator<RootStackParamList>();
 
 const AppNavigator: React.FC = () => {
   return (
-    <NavigationContainer>
-      <Stack.Navigator
-        screenOptions={{
-          headerShown: false,
-        }}
-      >
-        <Stack.Screen
-          name="Main"
-          component={BottomTabNavigator}
-        />
-        <Stack.Screen
-          name="NewsDetail"
-          component={NewsDetailScreen}
-          options={{ headerShown: false }}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      <Stack.Screen
+        name="Main"
+        component={BottomTabNavigator}
+      />
+      <Stack.Screen
+        name="NewsDetail"
+        component={NewsDetailScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="ARScreen"
+        component={ARScreen}
+        options={{ headerShown: false }}
+      />
+    </Stack.Navigator>
   );
 };
 

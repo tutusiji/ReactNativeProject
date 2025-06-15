@@ -109,7 +109,6 @@ const NewsScreen: React.FC = () => {
               <Image
                 source={{ uri: item.imageUrl }}
                 style={styles.newsImage}
-                defaultSource={require('../../assets/icon.png')}
               />
             )}
             <View style={styles.newsText}>

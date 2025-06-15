@@ -9,10 +9,14 @@ import {
   Dimensions,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
+import type { StackNavigationProp } from '@react-navigation/stack';
+import type { RootStackParamList } from '../types';
 
 const { width } = Dimensions.get('window');
 
 const ARVRScreen: React.FC = () => {
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
   const [selectedFeature, setSelectedFeature] = useState<string | null>(null);
 
   const features = [
@@ -52,17 +56,10 @@ const ARVRScreen: React.FC = () => {
 
   const handleFeaturePress = (feature: any) => {
     setSelectedFeature(feature.id);
-    
+
     switch (feature.id) {
       case 'webgl':
-        Alert.alert(
-          'WebGL 3D渲染',
-          '即将启动3D场景演示...',
-          [
-            { text: '取消', style: 'cancel' },
-            { text: '启动', onPress: () => startWebGLDemo() }
-          ]
-        );
+        navigation.navigate('ARScreen');
         break;
       case 'ar':
         Alert.alert(
@@ -124,7 +121,7 @@ const ARVRScreen: React.FC = () => {
           <Ionicons name="camera-outline" size={20} color="#2196F3" />
           <Text style={styles.actionText}>相机权限</Text>
         </TouchableOpacity>
-        
+
         <TouchableOpacity
           style={styles.actionButton}
           onPress={() => Alert.alert('性能测试', '检测设备性能...')}
@@ -132,7 +129,7 @@ const ARVRScreen: React.FC = () => {
           <Ionicons name="speedometer-outline" size={20} color="#4CAF50" />
           <Text style={styles.actionText}>性能测试</Text>
         </TouchableOpacity>
-        
+
         <TouchableOpacity
           style={styles.actionButton}
           onPress={() => Alert.alert('设置', 'AR/VR设置选项...')}

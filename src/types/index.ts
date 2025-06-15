@@ -90,6 +90,7 @@ export interface HardwareStatus {
 export type RootStackParamList = {
   Main: undefined;
   NewsDetail: { newsItem: NewsItem };
+  ARScreen: undefined;
   ARScene: { sceneId: string };
   DeviceControl: { deviceId: string };
   Settings: undefined;
